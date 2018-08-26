@@ -1,0 +1,49 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="image" style="text-align: center; margin-top: 20px;">
+    <img src="{% static 'images/game/hangman-start.gif' %}">
+</div>
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+<form action="/hangman/game" id="letters" method="POST">
+    <div>
+        <input type="hidden" name="game_id" value="{{ game.game_id }}"/>
+        <button class="btn btn-default" type="submit" name="letter" value="q">Q</button>
+        <button class="btn btn-default" type="submit" name="letter" value="w">W</button>
+        <button class="btn btn-default" type="submit" name="letter" value="e">E</button>
+        <button class="btn btn-default" type="submit" name="letter" value="r">R</button>
+        <button class="btn btn-default" type="submit" name="letter" value="t">T</button>
+        <button class="btn btn-default" type="submit" name="letter" value="y">Y</button>
+        <button class="btn btn-default" type="submit" name="letter" value="u">U</button>
+        <button class="btn btn-default" type="submit" name="letter" value="i">I</button>
+        <button class="btn btn-default" type="submit" name="letter" value="o">O</button>
+        <button class="btn btn-default" type="submit" name="letter" value="p">P</button>
+    </div>
+    <br>
+    <div>
+        <button class="btn btn-default" type="submit" name="letter" value="a">A</button>
+        <button class="btn btn-default" type="submit" name="letter" value="s">S</button>
+        <button class="btn btn-default" type="submit" name="letter" value="d">D</button>
+        <button class="btn btn-default" type="submit" name="letter" value="f">F</button>
+        <button class="btn btn-default" type="submit" name="letter" value="g">G</button>
+        <button class="btn btn-default" type="submit" name="letter" value="h">H</button>
+        <button class="btn btn-default" type="submit" name="letter" value="j">J</button>
+        <button class="btn btn-default" type="submit" name="letter" value="k">K</button>
+        <button class="btn btn-default" type="submit" name="letter" value="l">L</button>
+        <button class="btn btn-default" type="submit" name="letter" value="ç">Ç</button>
+    </div>
+    <br>
+    <div>
+        <button class="btn btn-default" type="submit" name="letter" value="z">Z</button>
+        <button class="btn btn-default" type="submit" name="letter" value="x">X</button>
+        <button class="btn btn-default" type="submit" name="letter" value="c">C</button>
+        <button class="btn btn-default" type="submit" name="letter" value="v">V</button>
+        <button class="btn btn-default" type="submit" name="letter" value="b">B</button>
+        <button class="btn btn-default" type="submit" name="letter" value="n">N</button>
+        <button class="btn btn-default" type="submit" name="letter" value="m">M</button>
+    </div>
+    {% csrf_token %}
+</form>
+</div>
+{% endblock %}

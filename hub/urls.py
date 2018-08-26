@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # core
     path('', include('app.core.urls'), name='core'),
+    #hangman
+    path('', include('app.hangman.urls'), name='hangman')
 ]
