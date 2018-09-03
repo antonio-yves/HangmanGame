@@ -8,8 +8,40 @@
 
           <h1 class="my-4">{{object.first_name}} {{object.last_name}} <small>Perfil do Usuário</small></h1>
 
-          <a href=""><button class="btn btn-primary"><i class="fas fa-plus"></i> Partida</button></a>
+          {{kwargs}}
+
           <a href="{% url 'hangman:add-word' %}"><button class="btn btn-primary"><i class="fas fa-plus"></i> Palavra</button></a>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalGame">
+           <i class="fas fa-plus"></i> Partida
+          </button>
+
+          <div class="modal fade" id="ModalGame" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Criação de Partida</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="alert alert-danger" role="alert">
+                    Deseja realmente criar uma nova partida?
+                    <br>Uma vez criada, a partida não poderá ser excluída.
+                  </div>
+                </div>
+                  <form method="post" action="{% url 'hangman:create-game' %}">
+                    {% csrf_token %}
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-success">Confirmar</button>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
 
           <div style="margin-top: 15px;">
           	<table class="table">
@@ -20,10 +52,10 @@
           			</tr>
           		</thead>
           		<tbody>
-          			{% for lei in leis %}
+          			{% for partida in partidas %}
           			<tr>
           				<th scope="row">{{ forloop.counter }}</th>
-          				<td>{{lei.name}}</td>
+          				<td>{{partida.status}}</td>
           			</tr>
           			{% endfor %}
           		</tbody>

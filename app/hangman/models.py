@@ -17,6 +17,9 @@ class Game(models.Model):
 	word = models.ForeignKey(Word, on_delete = models.CASCADE, related_name = 'words', verbose_name = 'Palavra')
 	status = models.IntegerField(verbose_name = 'Status', default = 0)
 	score = models.IntegerField(verbose_name = 'Pontos')
+	hits = models.IntegerField(verbose_name = "Acertos")
+	misses = models.IntegerField(verbose_name = "Erros") 
+	letters = models.CharField(max_length = 255, verbose_name = "Letras")
 
 	def __str__(self):
 		return 'Partida %i | %s' % (self.pk, self.user.first_name)

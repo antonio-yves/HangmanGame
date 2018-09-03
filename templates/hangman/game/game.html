@@ -2,13 +2,52 @@
 {% load static %}
 
 {% block content %}
+{% if misses == 0 %}
 <div id="image" style="text-align: center; margin-top: 20px;">
     <img src="{% static 'images/game/hangman-start.gif' %}">
 </div>
+{% elif misses == 1 %}
+<div id="image" style="text-align: center; margin-top: 20px;">
+    <img src="{% static 'images/game/hangman-head.gif' %}">
+</div>
+{% elif misses == 2 %}
+<div id="image" style="text-align: center; margin-top: 20px;">
+    <img src="{% static 'images/game/hangman-left-arm.gif' %}">
+</div>
+{% elif misses == 3 %}
+<div id="image" style="text-align: center; margin-top: 20px;">
+    <img src="{% static 'images/game/hangman-right-arm.gif' %}">
+</div>
+{% elif misses == 4 %}
+<div id="image" style="text-align: center; margin-top: 20px;">
+    <img src="{% static 'images/game/hangman-body.gif' %}">
+</div>
+{% elif misses == 5 %}
+<div id="image" style="text-align: center; margin-top: 20px;">
+    <img src="{% static 'images/game/hangman-left-leg.gif' %}">
+</div>
+{% else %}
+<div id="image" style="text-align: center; margin-top: 20px;">
+    <img src="{% static 'images/game/hangman-right-leg.gif' %}">
+</div>
+{% endif %}
+
+
+<div style="text-align: center; margin-top: 20px;">
+    {% for letter in secret_word %}
+        {% if letter in letras %}
+        <div style="width: 20px; float: left; margin-left: 10px;">{{letter}}</div>
+        {% else %}
+        <div style="width: 20px; border-bottom: 2px solid #000; float: left; margin-left: 10px;"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<br>
+
 <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
-<form action="/hangman/game" id="letters" method="POST">
+<form id="letters" method="POST">
     <div>
-        <input type="hidden" name="game_id" value="{{ game.game_id }}"/>
         <button class="btn btn-default" type="submit" name="letter" value="q">Q</button>
         <button class="btn btn-default" type="submit" name="letter" value="w">W</button>
         <button class="btn btn-default" type="submit" name="letter" value="e">E</button>

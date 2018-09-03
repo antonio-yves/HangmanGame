@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Jogo da Forca | Perfil do Usuário </title>
+    <title>Jogo da Forca | Perfil do Usuário {{request.user.username}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
@@ -55,8 +55,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
   </body>
 
