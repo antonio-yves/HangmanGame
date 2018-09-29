@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from .settings import DEBUG, STATIC_URL, STATIC_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +25,6 @@ urlpatterns = [
     #hangman
     path('', include('app.hangman.urls'), name='hangman')
 ]
+
+if DEBUG is True:
+    urlpatterns += static(STATIC_URL, document_root=STATIC_ROOT)
